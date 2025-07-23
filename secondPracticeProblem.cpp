@@ -24,12 +24,35 @@ int main()
         integerQueue.push(inputValue);
     }
 
-    if(stackSize != queueSize){
+    if (stackSize != queueSize)
+    {
         cout << "NO" << endl;
         return 0;
     }
 
-    
+    while (!integerStack.empty())
+    {
+        if (integerStack.top() != integerQueue.back())
+        {
+            if (integerStack.top() != integerQueue.front())
+            {
+                cout << "NO" << endl;
+                return 0;
+            }
+            else
+            {
+                integerStack.pop();
+                integerQueue.pop();
+            }
+        }
+        else
+        {
+            integerStack.pop();
+            integerQueue.pop();
+        }
+    }
+
+    cout << "YES" << endl;
 
     return 0;
 }
